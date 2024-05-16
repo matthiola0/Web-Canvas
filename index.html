@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html;"/>
+        <meta charset="utf-8"/>
+        <title>Web Canvas</title>
+        <meta name="author" content="潘柏育" />
+        <meta name="description" content="Web Canvas" />
+
+        <link rel="stylesheet" type="text/css" href="Web_Canvas.css">
+        <!-- Bootstrap CSS -->
+        <link
+			rel="stylesheet"
+			href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+			integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+			crossorigin="anonymous"
+		/>
+    </head>
+
+    <body>
+        <div class="row ">
+            <div id="left">
+                <canvas id="thecanvas"></canvas>
+            </div>
+
+            <div style="display: inline-block; margin-top: 50px;">
+                <div class="container">
+                    <canvas id="color_picker"></canvas>
+                </div>
+                <div style="margin: 5% 30% 5%;">
+                    <input oninput="Size();" min="1" max="100" value="50" type="range" class="slider" name="myRange" title="size">
+                </div>
+                <table style="margin: 3% 30% auto;">
+
+                    <tr class="row">
+                        <td>
+                            <select id="fontStyle">     <!--字體選擇 -->
+                                <option>新細明體</option>
+                                <option>標楷體</option>
+                                <option>Arial</option>
+                                <option>Didot</option>
+                                <option>Georgia</option>
+                                <option>Palatino</option>
+                            </select>
+                        </td>
+                        <td>                            <!--字體大小 -->
+                            <input value="18" type="number" id="fontSize">
+                        </td>
+                    </tr>
+                    <!--工具欄-->
+                    <tr class="row">           <!--工具-->
+                        <td onclick="Choose('Pen');" type="button" class="button" title="pen" >
+                            <img src="image/pen.png" width="20" height="20"/>
+                        </td>
+                        <td onclick="Choose('Eraser');" type="button" class="button" title="eraser">
+                            <img src="image/eraser.png" width="16" height="16"/>
+                        </td>
+                        <td onclick="Choose('Text');" type="button" class="button" title="text">
+                            <img src="image/text.png" width="16" height="16"/>
+                        </td>
+                    </tr>
+
+                    <tr class="row">            <!--工具-->
+                        <td onclick="Choose('Circle');" type="button" class="button" title="circle">
+                            <img src="image/circle.png" width="16" height="16" id="circle_img"/>
+                        </td>
+                        <td onclick="Choose('Triangle');" type="button" class="button" title="triangle">
+                            <img src="image/triangle.png" width="16" height="16" id="triangle_img"/>
+                        </td>
+                        <td onclick="Choose('Rectangle');" type="button" class="button" title="rectangle">
+                            <img src="image/rectangle.png" width="16" height="16" id="rectangle_img"/>
+                        </td>
+                    </tr>
+
+                    <tr class="row">            <!--工具-->
+                        <td onclick="Choose('Line');" type="button" class="button" title="line">
+                            <img src="image/line.png" width="16" height="16"/>
+                        </td>
+                        <td ><label title="upload" class="button">          <!--上傳圖片 -->
+                            <img src="image/upload.png" width="16" height="16"/>
+                            <input onchange="Upload(this);" id="upload" accept="image/*" type="file"/>
+                        </label></td>
+                        <td onclick="Download();" type="button" class="button" id="download" title="download">
+                            <img src="image/download.png" width="16" height="16"/>
+                        </td>
+                    </tr>
+
+                    <tr class="row">            <!--工具-->
+                        <td onclick="Do('Undo');" type="button" class="button" id="undo" title="undo">
+                            <img src="image/undo.png" width="16" height="16"/>
+                        </td>
+                        <td onclick="Do('Redo');" type="button" class="button" id="redo" title="redo">
+                            <img src="image/redo.png" width="16" height="16"/>
+                        </td>
+                        <td onclick="Do('Clear');" type="button" class="button" id="clear" title="clear">
+                            <img src="image/clear.png" width="25" height="25"/>
+                        </td>
+                    </tr>
+
+                    <tr class="row">                      <!-- bonus -->      
+                        <td onclick="changeFill();" type="button" class="button" id="changeFill" title="changeFill">
+                            <img src="image/circle_fill.png" id="fill_img" width="16" height="16"/>
+                        </td>
+                        <td onmousedown="Choose('Rainbow');" type="button" class="button" title="rainbow">
+                            <img src="image/rainbow.png" width="16" height="16"/>
+                        </td>
+                    </tr>
+
+                </table>
+
+            </div>
+        </div>
+
+        <script src="Web_Canvas.js"></script>
+	</body>
+</html>
